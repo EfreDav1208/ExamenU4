@@ -1,0 +1,46 @@
+<br>
+<form [formGroup]="form" (ngSubmit)="save($event)">
+  <div class="input-group input-group-sm mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-sm">Titulo</span>
+    </div>
+    <input type="text" [(ngModel)]="titulo" formControlName="NombreNota" class="form-control" placeholder="Titulo De La Nota" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+  </div>
+    <div *ngIf="form.get('NombreNota').errors && form.get('NombreNota').touched">
+      <p *ngIf="form.get('NombreNota').hasError('required')">
+        Es un campo requerido
+      </p>
+    </div>
+   <div class="input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Descripcion</span>
+    </div>
+    <input type="text"  [(ngModel)]="Des" formControlName="DescripcionNota" class="form-control" placeholder="Descripcion De La Nota"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+    
+  </div>
+  <div *ngIf="form.get('DescripcionNota').errors && form.get('DescripcionNota').touched">
+    <p *ngIf="form.get('DescripcionNota').hasError('required')">
+      Es un campo requerido
+    </p>
+  </div>
+  <br>
+  <button class="btn btn-primary"  (click)="guardarArreglo()" type="submit">Guardar</button> 
+  <button class="btn btn-success ml-2" type="button" (click)="mostrarArreglo()" >Mostar</button>
+  <button class="btn btn-danger ml-3" type="button" (click)="onButtonEliminar()">Eliminar</button> 
+</form>
+<br>
+
+<div class="card" style="width: 18rem;" *ngFor="let t of arregloT; let d of arregloD " >
+  <div class="card-body">
+    <h5 class="card-title">{{t}}</h5>
+    <p class="card-text">{{d}}</p>
+  </div>
+</div>
+
+
+<br>
+<p>Efren David Hernandez Rodriguez</p>
+<br>
+<p>Desarrollo de aplicaciones web</p>
+<br>
+<p>Ing. Ivan E. Garcia Quintero</p>
